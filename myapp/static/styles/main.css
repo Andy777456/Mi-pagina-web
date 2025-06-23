@@ -1,0 +1,29 @@
+body {
+    background: #202020;
+    color: whitesmoke;
+}
+
+.navbar {
+    background: #404040;
+    padding: 5px 10px;
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar ul li a {
+    color: white;
+}
+
+.navbar ul li a:hover {
+    color: aquamarine;
+}
+
+.card {
+    background: whitesmoke;
+    color: black;
+    padding: 10px;
+    margin-bottom: 2px;
+}
