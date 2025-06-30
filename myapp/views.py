@@ -39,6 +39,24 @@ def tasks(request):
         "tasks": tasks
     })
 
+def task_delete(request, task_id):
+    # get_object_or_404 busca la tarea o devuelve un error 404 si no la encuentra.
+    task = get_object_or_404(Task, pk=task_id)
+    if request.method == 'POST':
+        task.delete()
+        # Redirigimos al usuario de vuelta a la lista de tareas.
+        return redirect('tasks')
+    # Si el método no es POST, simplemente redirigimos.
+    return redirect('tasks')
+
+def task_done(request, task_id):
+    task = get_object_or_404(Task, pk=task_id)
+    if request.method == 'POST':
+        task.done = True
+        task.save()
+        return redirect('tasks')
+    return redirect('tasks')
+
 
 def create_task(request):
     if request.method == "GET":
