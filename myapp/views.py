@@ -63,10 +63,21 @@ def create_task(request):
         return render(request, "tasks/create_task.html", {
             "form": CreateNewTask()
         })
+    if request.method == "POST":
+        form = CreateNewTask(request.POST)
+        if form.is_valid():
+            Task.objects.create(
+                title=form.cleaned_data["title"],
+                description=form.cleaned_data["description"],
+                project=form.cleaned_data["project"],
+            )
+            return redirect("tasks")
     else:
         Task.objects.create(
             title=request.POST["title"], description=request.POST["description"], project_id=2)
         return redirect("tasks")
+        form = CreateNewTask()
+    return render(request, "tasks/create_task.html", {"form": form})
 
 
 def create_project(request):

@@ -5,7 +5,18 @@
 
 <form method="POST">
     {% csrf_token %}
-    {{form.as_p}}
+    <p>
+        {{ form.title.label_tag }}<br>
+        {{ form.title }}
+    </p>
+    <p>
+        {{ form.description.label_tag }}<br>
+        {{ form.description }}
+    </p>
+    <p>
+        {{ form.project.label_tag }}<br>
+        {{ form.project }}
+    </p>
     <button>
         Save
     </button>
